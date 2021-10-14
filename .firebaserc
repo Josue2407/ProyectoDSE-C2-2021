@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "gestionempleados-1aabb": {
+      "hosting": {
+        "ng": [
+          "gestionempleados-1aabb"
+        ]
+      }
+    }
+  }
+}
