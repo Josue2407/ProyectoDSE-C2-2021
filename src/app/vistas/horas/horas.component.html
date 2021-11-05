@@ -47,117 +47,13 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr >
-                        <td>22/10/2021</td>
-                        <td>07:00:12</td>
-                        <td>12:00:12</td>
-                        <td>13:20:12</td>
-                        <td>17:00:12</td>
-                        <td>30</td>
-                      </tr>
-                      <tr >
-                        <td>22/10/2021</td>
-                        <td>07:00:12</td>
-                        <td>12:00:12</td>
-                        <td>13:20:12</td>
-                        <td>17:00:12</td>
-                        <td>30</td>
-                      </tr>
-                      <tr >
-                        <td>22/10/2021</td>
-                        <td>07:00:12</td>
-                        <td>12:00:12</td>
-                        <td>13:20:12</td>
-                        <td>17:00:12</td>
-                        <td>30</td>
-                      </tr>
-                      <tr >
-                        <td>22/10/2021</td>
-                        <td>07:00:12</td>
-                        <td>12:00:12</td>
-                        <td>13:20:12</td>
-                        <td>17:00:12</td>
-                        <td>30</td>
-                      </tr>
-                      <tr >
-                        <td>22/10/2021</td>
-                        <td>07:00:12</td>
-                        <td>12:00:12</td>
-                        <td>13:20:12</td>
-                        <td>17:00:12</td>
-                        <td>30</td>
-                      </tr>
-                      <tr >
-                        <td>22/10/2021</td>
-                        <td>07:00:12</td>
-                        <td>12:00:12</td>
-                        <td>13:20:12</td>
-                        <td>17:00:12</td>
-                        <td>30</td>
-                      </tr>
-                      <tr >
-                        <td>22/10/2021</td>
-                        <td>07:00:12</td>
-                        <td>12:00:12</td>
-                        <td>13:20:12</td>
-                        <td>17:00:12</td>
-                        <td>30</td>
-                      </tr>
-                      <tr >
-                        <td>22/10/2021</td>
-                        <td>07:00:12</td>
-                        <td>12:00:12</td>
-                        <td>13:20:12</td>
-                        <td>17:00:12</td>
-                        <td>30</td>
-                      </tr>
-                      <tr >
-                        <td>22/10/2021</td>
-                        <td>07:00:12</td>
-                        <td>12:00:12</td>
-                        <td>13:20:12</td>
-                        <td>17:00:12</td>
-                        <td>30</td>
-                      </tr>
-                      <tr >
-                        <td>22/10/2021</td>
-                        <td>07:00:12</td>
-                        <td>12:00:12</td>
-                        <td>13:20:12</td>
-                        <td>17:00:12</td>
-                        <td>30</td>
-                      </tr>
-                      <tr >
-                        <td>22/10/2021</td>
-                        <td>07:00:12</td>
-                        <td>12:00:12</td>
-                        <td>13:20:12</td>
-                        <td>17:00:12</td>
-                        <td>30</td>
-                      </tr>
-                      <tr >
-                        <td>22/10/2021</td>
-                        <td>07:00:12</td>
-                        <td>12:00:12</td>
-                        <td>13:20:12</td>
-                        <td>17:00:12</td>
-                        <td>30</td>
-                      </tr>
-                      <tr >
-                        <td>22/10/2021</td>
-                        <td>07:00:12</td>
-                        <td>12:00:12</td>
-                        <td>13:20:12</td>
-                        <td>17:00:12</td>
-                        <td>30</td>
-                      </tr>
-                      <tr >
-                        <td>22/10/2021</td>
-                        <td>07:00:12</td>
-                        <td>12:00:12</td>
-                        <td>13:20:12</td>
-                        <td>17:00:12</td>
-                        <td>30</td>
+                      <tr *ngFor="let marcacion of marcacioneList">
+                        <td>{{marcacion.fecha}}</td>
+                        <td>{{marcacion.horaEntrada}}</td>
+                        <td>{{marcacion.horaSalidaAlmuerzo}}</td>
+                        <td>{{marcacion.horaEntradaAlmuerzo}}</td>
+                        <td>{{marcacion.horaSalida}}</td>
+                        <td>{{marcacion.minutosTardes}}</td>
                       </tr>
                     </tbody>
                     <tfoot>
@@ -167,13 +63,63 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td>80</td>
+                            <td>{{totalMinutes}}</td>
                         </tr>
                     </tfoot>
                   </table>
                 </div>
               </div>
             
+        </div>
+        <div class="col-md-6">
+          <div class="card p-3">
+            <h4>Descuentos Aplicados</h4>
+            <div class="container">
+              <div class="row" style="height: 200px;">
+                <div class="col-md-12">
+                  <p>Total Minutos Tardes: 180 Minutos</p>
+                  <p style="font-weight: bold;">Salario a descontar:  $23.45</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card p-3">
+            <h4>Permisos del mes</h4>
+            <div class="row" style="height: 200px;overflow-y: scroll;">
+              <div class="col-md-12 contenedor" >
+                <div class="alert alert-danger">
+                  <p>12/10/2021</p>
+                  <p style="font-weight: bold;">Permisos para entrada tardes, por motivos personales</p>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="alert alert-danger">
+                  <p>12/10/2021</p>
+                  <p style="font-weight: bold;">Permisos para entrada tardes, por motivos personales</p>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="alert alert-danger">
+                  <p>12/10/2021</p>
+                  <p style="font-weight: bold;">Permisos para entrada tardes, por motivos personales</p>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="alert alert-danger">
+                  <p>12/10/2021</p>
+                  <p style="font-weight: bold;">Permisos para entrada tardes, por motivos personales</p>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="alert alert-danger">
+                  <p>12/10/2021</p>
+                  <p style="font-weight: bold;">Permisos para entrada tardes, por motivos personales</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
     </div>
 </div>
