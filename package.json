@@ -54,6 +54,7 @@
     "ng2-charts": "^2.4.2",
     "ngx-bootstrap": "^6.2.0",
     "ngx-perfect-scrollbar": "^10.1.0",
+    "pdfmake": "^0.2.3",
     "rxjs": "^6.6.6",
     "simple-line-icons": "^2.5.5",
     "sweetalert2": "^11.1.9",
