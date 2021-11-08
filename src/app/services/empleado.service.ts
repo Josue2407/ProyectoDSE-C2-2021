@@ -29,6 +29,7 @@ afp:string;
 isss:string;
 contratacion:string;
 sueldo:number;
+password:string;
 
   constructor( private firebase:AngularFireDatabase) { }
 
@@ -37,7 +38,7 @@ sueldo:number;
   }
 
   insertEmpleado(nombre:string,email:string,direccion:string,fechaNacimiento:string,
-    ingresoEmpresa:string,cargo:string,horas:number,dui:string,nit:string,telefono:string,afp:string,isss:string,contratacion:string,sueldo:number){
+    ingresoEmpresa:string,cargo:string,horas:number,dui:string,nit:string,telefono:string,afp:string,isss:string,contratacion:string,sueldo:number,password:string){
     this.empleadoList.push({
       nombre: nombre,
       email: email,
@@ -53,6 +54,7 @@ sueldo:number;
       isss: isss,
       contratacion: contratacion,
       sueldo: sueldo,
+      password: password
     });
   }
 
@@ -72,7 +74,8 @@ sueldo:number;
       afp: empleado.afp,
       isss: empleado.isss,
       contratacion: empleado.contratacion,
-      sueldo: empleado.sueldo
+      sueldo: empleado.sueldo,
+      password: empleado.password
     });
   }
 

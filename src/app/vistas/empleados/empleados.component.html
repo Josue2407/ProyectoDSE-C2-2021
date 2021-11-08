@@ -71,8 +71,12 @@
           </div>
           <div class="form-group row">
             <label class="col-md-2 col-form-label" for="email-input">Correo Electronico</label>
-            <div class="col-md-10">
+            <div class="col-md-4">
               <input type="email" name="email" [(ngModel)]="email" class="form-control" placeholder="Correo Electronico">
+            </div>
+            <label class="col-md-2 col-form-label" for="password-input">Contraseña</label>
+            <div class="col-md-4">
+              <input type="password" name="password" [(ngModel)]="password" class="form-control" placeholder="Contraseña">
             </div>
           </div>
           <div class="form-group row">
@@ -171,8 +175,12 @@
           </div>
           <div class="form-group row">
             <label class="col-md-2 col-form-label" for="email-input">Correo Electronico</label>
-            <div class="col-md-10">
-              <input type="email" name="email" [(ngModel)]="empleadoService.selectedEmpleado.email" [(ngModel)]="email" class="form-control" placeholder="Correo Electronico">
+            <div class="col-md-4">
+              <input type="email" name="email" [(ngModel)]="empleadoService.selectedEmpleado.email" [(ngModel)]="email" class="form-control" placeholder="Correo Electronico" disabled>
+            </div>
+            <label class="col-md-2 col-form-label" for="password-input">Contraseña</label>
+            <div class="col-md-4">
+              <input type="password" name="password" [(ngModel)]="empleadoService.selectedEmpleado.password" [(ngModel)]="password" class="form-control" placeholder="Contraseña">
             </div>
           </div>
           <div class="form-group row">

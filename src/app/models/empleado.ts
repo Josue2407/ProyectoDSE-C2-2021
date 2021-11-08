@@ -14,4 +14,5 @@ export class Empleado {
     isss:string;
     contratacion:string;
     sueldo:number;
+    password:string;
 }
