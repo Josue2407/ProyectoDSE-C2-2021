@@ -1,1 +1,233 @@
-<p>solicitud-permiso works!</p>
+<div class="animated fadeIn">
+    <br>
+  <div class="col-md-12">
+<!--     <button type="button"  class="btn btn-primary" (click)="descargar()">Generar reporte de permisos</button> -->
+  </div>
+  <br>
+  <br>
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Listado de Permisos
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered table-hover">
+            <thead class="table-primary">
+              <tr>
+                <th>Nombre</th>
+                <th>DUI</th>
+                <th>Cargo</th>
+                <th>Motivo</th>
+                <th>Fecha</th>
+                <th>Desde</th>
+                <th>Hasta</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let permiso of permisoList">
+                <td>{{permiso.nombre}}</td>
+                <td>{{permiso.dui}}</td>
+                <td>{{permiso.cargo}}</td>
+                <td>{{permiso.motivo}}</td>
+                <td>{{permiso.fechaPermiso}}</td>
+                <td>{{permiso.desde}}</td>
+                <td>{{permiso.hasta}}</td>
+                <td>
+                    <a class="btn btn-success" data-bs-toggle="tooltip" data-placement="top" title="Aprobada" data-bs-toggle="modal"  (click)="onYes(permiso.$key)"><i class="fa fa-check"></i></a>
+                    <a class="btn btn-danger" data-bs-toggle="tooltip" data-placement="top" title="Rechazada" (click)="onDelete(permiso.$key)"><i class="fa fa-times"></i></a>
+  
+                </td>
+                <!--
+                  <a class="btn btn-secondary text-white" (click)="onEdit(product)">
+                              <i class="far fa-edit"></i>
+                          </a>
+                          <a class="btn btn-danger text-white" (click)="onDelete(product.$key)">
+                              <i class="fas fa-trash-alt"></i>
+                -->
+              </tr>
+            </tbody>
+          </table>
+          <!-- <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+            <li class="page-item active">
+              <a class="page-link" href="#">1</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul> -->
+        </div>
+      </div>
+    </div>
+  
+  </div>
+  
+  <div class="modal fade" id="RegistroPermiso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-primary modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Ingreso de Permisos</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+  
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="text-input">Nombre</label>
+              <div class="col-md-10">
+                <input type="text" name="nombre" [(ngModel)]="nombre" class="form-control" placeholder="Nombre Completo">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="password-input">DUI</label>
+              <div class="col-md-4">
+                <input type="text" name="dui" [(ngModel)]="dui" class="form-control" placeholder="DUI">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="disabled-input">Telefono</label>
+              <div class="col-md-2">
+                <input type="text" name="telefono" [(ngModel)]="telefono" class="form-control" placeholder="Telefono">
+              </div>
+            </div>
+  
+            </div>
+         <div class="form-group row">
+            <label class="col-md-2 col-form-label" for="select1">Cargo</label>
+              <div class="col-md-2">
+                <select name="cargo" [(ngModel)]="cargo" class="form-control">
+                  <option value="Supervisor">Supervisor</option>
+                  <option value="Limpieza">Limpieza</option>
+                  <option value="Operario">Operario</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+            <label class="col-md-2 col-form-label" for="select1">Motivo</label>
+              <div class="col-md-2">
+                <select name="motivo" [(ngModel)]="motivo" class="form-control">
+                  <option value="Enfermedad">Enfermedad</option>
+                  <option value="Duelo">Duelo</option>
+                  <option value="Matrimonio">Matrimonio</option>
+                  <option value="Nacimiento hijo">Nacimiento de hijo</option>
+                  <option value="Enfermedad pariente">Enfermedad de parientes cercanos</option>
+                  <option value="Enfermedad hijo">Enfermedad de hijo</option>
+                  <option value="Eventos">Eventos académicos puntuales</option>
+                  <option value="Otro asunto personal">Otros asuntos personales</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="date-input">Fecha</label>
+              <div class="col-md-4">
+                <input class="form-control" type="date" name="fechaPermiso" [(ngModel)]="fechaPermiso" placeholder="date">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="date-input">Desde la(s)</label>
+              <div class="col-md-4">
+                <input class="form-control" type="time" name="desde" [(ngModel)]="desde" placeholder="time">
+              </div>
+              <label class="col-md-2 col-form-label" for="date-input">Hasta la(s)</label>
+              <div class="col-md-4">
+                <input class="form-control" type="time" name="hasta" [(ngModel)]="hasta" placeholder="time">
+              </div>
+            </div>
+  
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cancelar</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="onSubmit()">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="EditarPermiso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-primary modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Modificar Permiso</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+  
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="text-input">Nombre</label>
+              <div class="col-md-10">
+                <input type="text" name="nombre" [(ngModel)]="permisoService.selectedPermiso.nombre" class="form-control" placeholder="Nombre Completo">
+              </div>
+            </div>
+                      <div class="form-group row">
+                   <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="password-input">DUI</label>
+              <div class="col-md-4">
+                <input type="text" name="dui" [(ngModel)]="permisoService.selectedPermiso.dui" class="form-control" placeholder="DUI">
+              </div>
+            </div>
+              <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="disabled-input">Telefono</label>
+              <div class="col-md-2">
+                <input type="text" name="telefono" [(ngModel)]="permisoService.selectedPermiso.telefono" class="form-control" placeholder="Telefono">
+              </div>
+            </div>
+  
+            </div>
+  
+            <div class="form-group row">
+            <label class="col-md-2 col-form-label" for="select1">Cargo</label>
+              <div class="col-md-2">
+                <select name="cargo" [(ngModel)]="permisoService.selectedPermiso.cargo" class="form-control">
+                  <option value="Supervisor">Supervisor</option>
+                  <option value="Limpieza">Limpieza</option>
+                  <option value="Operario">Operario</option>
+                </select>
+              </div>
+            </div>
+  
+            <div class="form-group row">
+            <label class="col-md-2 col-form-label" for="select1">Motivo</label>
+              <div class="col-md-2">
+                <select name="motivo" [(ngModel)]="permisoService.selectedPermiso.motivo" class="form-control">
+                  <option value="Enfermedad">Enfermedad</option>
+                  <option value="Duelo">Duelo</option>
+                  <option value="Matrimonio">Matrimonio</option>
+                  <option value="Nacimiento hijo">Nacimiento de hijo</option>
+                  <option value="Enfermedad pariente">Enfermedad de parientes cercanos</option>
+                  <option value="Enfermedad hijo">Enfermedad de hijo</option>
+                  <option value="Eventos">Eventos académicos puntuales</option>
+                  <option value="Otros">Otros asuntos personales</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="date-input">Fecha</label>
+              <div class="col-md-4">
+                <input class="form-control" type="date" name="fechaPermiso" [(ngModel)]="permisoService.selectedPermiso.fechaPermiso" placeholder="date">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="date-input">Desde la(s)</label>
+              <div class="col-md-4">
+                <input class="form-control" type="time" name="desde" [(ngModel)]="permisoService.selectedPermiso.desde" placeholder="time">
+              </div>
+              <label class="col-md-2 col-form-label" for="date-input">Hasta la(s)</label>
+              <div class="col-md-4">
+                <input class="form-control" type="time" name="hasta" [(ngModel)]="permisoService.selectedPermiso.hasta" placeholder="time">
+              </div>
+            </div>
+  
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cancelar</button>
+          <button type="button" data-bs-dismiss="modal" class="btn btn-primary" (click)="onUpdate()">Actualizar</button>
+        </div>
+      </div>
+    </div>
+  </div>
