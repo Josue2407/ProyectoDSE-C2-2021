@@ -18,4 +18,16 @@ export class MarcacionService {
   getMarcaciones(){
     return this.marcacionesList = this.firebase.list('marcaciones');
   }
+
+  updateMarcacion(marcacion:Marcacion){
+    this.marcacionesList.update(marcacion.$key,{   
+      dui: marcacion.dui,
+      fecha: marcacion.fecha,
+      horaEntrada:marcacion.horaEntrada,
+      horaSalidaAlmuerzo:marcacion.horaSalidaAlmuerzo,
+      horaEntradaAlmuerzo:marcacion.horaEntradaAlmuerzo,
+      horaSalida:marcacion.horaSalida,
+      minutosTardes:0
+    });
+  }
 }

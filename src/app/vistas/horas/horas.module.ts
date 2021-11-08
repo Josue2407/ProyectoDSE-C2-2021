@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { FormsModule } from '@angular/forms';
 import { HorasRoutingModule } from './horas-routing.module';
 import { HorasComponent } from './horas.component';
 
@@ -11,7 +11,8 @@ import { HorasComponent } from './horas.component';
   ],
   imports: [
     CommonModule,
-    HorasRoutingModule
+    HorasRoutingModule,
+    FormsModule
   ]
 })
 export class HorasModule { }
