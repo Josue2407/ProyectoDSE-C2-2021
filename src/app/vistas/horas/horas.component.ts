@@ -97,7 +97,6 @@ export class HorasComponent implements OnInit {
       console.log(this.fechaInicio)
       this.totalMinutes = 0;
       this.marcacioneList.forEach(x => this.totalMinutes += x.minutosTardes);
-      console.log(this.totalMinutes)
     });
 
     this.getPermisos();
@@ -141,7 +140,7 @@ export class HorasComponent implements OnInit {
         if ((x as Permiso).dui == this.dui)
           this.permisosList.push(x as Permiso);
           
-        console.log(this.permisosList)
+    
       });
     });
     }
@@ -150,16 +149,21 @@ export class HorasComponent implements OnInit {
       item.forEach(element =>{
         let x = element.payload.toJSON();
         x["$key"]= element.key;
-        console.log(x)
+        console.log(element)
+        alert((x as Empleado).dui)
           if(this.dui == (x as Empleado).dui)
-          this.empleadoSelected = (x as Empleado);  
-          this.nombre = this.empleadoSelected.nombre;
-          //Calcular descuentos
-          this.salario = this.empleadoSelected.sueldo;
-           this.salarioxHora = ((this.empleadoSelected.sueldo / 4)/this.empleadoSelected.horas).toFixed(2)
-          //por cada 7 minutos se descuenta media hora
-          this.horasDescontadas =Math.round((this.totalMinutes / 7))
-          this.descuentos = (this.horasDescontadas * parseFloat(this.salarioxHora)).toFixed(2);
+          {
+            this.empleadoSelected = (x as Empleado);  
+          
+            this.nombre = this.empleadoSelected.nombre;
+            //Calcular descuentos
+            this.salario = this.empleadoSelected.sueldo;
+             this.salarioxHora = ((this.empleadoSelected.sueldo / 4)/this.empleadoSelected.horas).toFixed(2)
+            //por cada 7 minutos se descuenta media hora
+            this.horasDescontadas =Math.round((this.totalMinutes / 7))
+            this.descuentos = (this.horasDescontadas * parseFloat(this.salarioxHora)).toFixed(2);
+          }
+            
       });
     });
   }
