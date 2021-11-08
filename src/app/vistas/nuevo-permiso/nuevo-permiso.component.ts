@@ -58,7 +58,8 @@ export class NuevoPermisoComponent implements OnInit {
 
 onSubmit(){ //this.estado="Pendiente";
     this.permisoService.insertPermiso(this.nombre,this.dui,this.telefono,this.cargo,
-      this.motivo,this.fechaPermiso,this.desde,this.hasta);Swal.fire({
+      this.motivo,'',this.fechaPermiso,this.desde,this.hasta);
+      Swal.fire({
         icon: 'success',
         title: 'Solicitud Ingresada',
         showConfirmButton: false,

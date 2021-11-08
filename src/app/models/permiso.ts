@@ -8,4 +8,5 @@ export class Permiso {
     fechaPermiso:string;
     desde:string;
     hasta:string;
+    comentario:string
 }

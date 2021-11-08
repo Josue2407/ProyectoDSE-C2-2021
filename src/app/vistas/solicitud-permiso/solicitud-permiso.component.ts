@@ -57,7 +57,7 @@ export class SolicitudPermisoComponent implements OnInit {
 
 onSubmit(){ //this.estado="Pendiente";
     this.permisoService.insertPermiso(this.nombre,this.dui,this.telefono,this.cargo,
-      this.motivo,this.fechaPermiso,this.desde,this.hasta);
+      this.motivo,'',this.fechaPermiso,this.desde,this.hasta);
     this.resetForm();
   }
 /*
