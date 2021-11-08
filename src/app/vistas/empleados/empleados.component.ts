@@ -74,9 +74,10 @@ export class EmpleadosComponent implements OnInit{
   onSubmit(){
     this.empleadoService.insertEmpleado(this.nombre,this.email,this.direccion,this.fechaNacimiento,
       this.ingresoEmpresa,this.cargo,this.horas,this.dui,this.nit,this.telefono,this.afp,this.isss,this.contratacion,this.sueldo,this.password);
+      if(this.cargo=="Supervisor"){
+        this.authService.SignUp(this.email,this.password);
+      }
       
-      this.authService.SignUp(this.email,this.password);
-
       Swal.fire({
       icon: 'success',
       title: 'Empleado Ingresado',

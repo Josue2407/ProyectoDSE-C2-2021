@@ -10,7 +10,6 @@ import {Empleado} from '../../models/empleado';
 import { element } from 'protractor';
 import { PropertyRead } from '@angular/compiler';
 import Swal from 'sweetalert2';
-import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-usuarios',
