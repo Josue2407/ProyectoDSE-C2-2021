@@ -21,12 +21,7 @@ export const navItems: INavData[] = [
     url: '/Horas',
     icon: 'icon-clock'
   },
-  {
-    name: 'Informacion',
-    // url: '/theme/typography',
-    url: '/Informacion',
-    icon: 'icon-info'
-  },
+  
   {
     title: true,
     name: 'Reportes'
@@ -184,12 +179,7 @@ export const navItems: INavData[] = [
       }
     ]
   } ,*/
-  {
-    name: 'Empleado',
-    //url: '/widgets',
-    url:'/Empleado',
-    icon: 'icon-user'
-  },
+  
   {
     divider: true
   },
