@@ -28,6 +28,7 @@ export class SolicitudPermisoComponent implements OnInit {
     hasta:string;
     //estado:string; 
 
+    
   constructor(
     public permisoService: PermisoService 
   ) { }

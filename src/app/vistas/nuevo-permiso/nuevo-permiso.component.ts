@@ -10,6 +10,11 @@ import { Permiso } from '../../models/permiso';
 import { element } from 'protractor';
 import Swal from 'sweetalert2';
 
+//pdf
+import pdfMake from 'pdfmake/build/pdfmake'; 
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-nuevo-permiso',
@@ -28,7 +33,22 @@ export class NuevoPermisoComponent implements OnInit {
     hasta:string;
     //estado:string; 
 
+    createPdf (){
+      //const pdfDefinition: any = {content:[{text:'hola'}]}
+      const pdfDefinition: any = {content:[{
+        //text:'hola'
+        
+      table: {
+          body: [  
+            ['Nombre', 'DUI', 'Telefono', 'Cargo', 'Motivo', 'Fecha', 'Desde', 'Hasta'],  
+            ...this.permisoList.map(p => ([p.nombre,p.dui,p.telefono,p.cargo,p.motivo,p.fechaPermiso,p.desde,p.hasta]))  
+        ] 
+        }
 
+      }]}
+      const pdf = pdfMake.createPdf (pdfDefinition);
+      pdf.open();
+    }
   constructor(
     public permisoService: PermisoService 
   ) { }
