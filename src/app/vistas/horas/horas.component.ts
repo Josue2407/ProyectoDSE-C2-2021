@@ -150,7 +150,6 @@ export class HorasComponent implements OnInit {
         let x = element.payload.toJSON();
         x["$key"]= element.key;
         console.log(element)
-        alert((x as Empleado).dui)
           if(this.dui == (x as Empleado).dui)
           {
             this.empleadoSelected = (x as Empleado);  
