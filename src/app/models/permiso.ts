@@ -1,13 +1,11 @@
 export class Permiso {
     $key:string;
-    Cargo:string;
-    Desde:string;
-    Email:string;
-    FechaPermiso:string;
-    Hasta:string;
-    Motivo:string;
-    Nombre:number;
-    Telefono:string;
-    Dui:string;
-    Comentario:string
+    nombre:string;
+    dui:string;
+    telefono:string;
+    cargo:string;
+    motivo:string;
+    fechaPermiso:string;
+    desde:string;
+    hasta:string;
 }

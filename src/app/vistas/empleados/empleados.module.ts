@@ -12,7 +12,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
   imports: [
     CommonModule,
     EmpleadosRoutingModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class EmpleadosModule { }
