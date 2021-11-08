@@ -22,13 +22,14 @@ export class PermisoService {
   }
 
   insertPermiso(
-  nombre:string,dui:string,telefono:string,cargo:string,motivo:string,fechaPermiso:string,desde:string,hasta:string){
+  nombre:string,dui:string,telefono:string,cargo:string,motivo:string,comentario:string,fechaPermiso:string,desde:string,hasta:string){
     this.permisoList.push({
       nombre: nombre,
       dui: dui,
       telefono: telefono,
       cargo: cargo,
       motivo: motivo,
+      comentario:comentario,
       fechaPermiso: fechaPermiso,
       desde: desde,
       hasta: hasta,

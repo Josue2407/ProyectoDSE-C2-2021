@@ -1,1 +1,146 @@
-<p>horas works!</p>
+<div class="animated fadeIn p-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h4 class="text-center">Información de horas trabajadas</h4>
+    </div>
+    <div class="col-md-12 p-3">
+      <input type="text" name="dui" [(ngModel)]="dui" class="form-control" placeholder="Buscar por numero de DUI">
+    </div>
+    <div class="col-md-12">
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label" for="date-input">Fecha Inicio</label>
+        <div class="col-md-4">
+          <input class="form-control" type="date" name="fechaInicio" [(ngModel)]="fechaInicio" placeholder="date">
+        </div>
+        <label class="col-md-2 col-form-label" for="date-input">Fecha Final</label>
+        <div class="col-md-4">
+          <input class="form-control" type="date" name="fechaFin" [(ngModel)]="fechaFin" placeholder="date">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <button class="btn btn-primary btn-large" (click)="search()">Buscar</button>
+    </div>
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-info"></i>{{nombre}}
+        </div>
+        <div class="card-body table-responsive">
+          <table class="table table-bordered table-hover">
+            <thead class="table-warning">
+              <tr>
+                <th>Fecha</th>
+                <th>Hora Entrada</th>
+                <th>Hora Salida Almuerzo</th>
+                <th>Hora Entrada Almuerzo</th>
+                <th>Hora Salida</th>
+                <th>Minutos Tardes</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let marcacion of marcacioneList">
+                <td>{{marcacion.fecha}}</td>
+                <td>{{marcacion.horaEntrada}}</td>
+                <td>{{marcacion.horaSalidaAlmuerzo}}</td>
+                <td>{{marcacion.horaEntradaAlmuerzo}}</td>
+                <td>{{marcacion.horaSalida}}</td>
+                <td>{{marcacion.minutosTardes}}</td>
+                <td><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#NuevoPermiso" (click)="SetDataPermiso(marcacion)">Solicitar
+                    Permiso</button></td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Total</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{totalMinutes}}</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-6">
+      <div class="card p-3">
+        <h4>Descuentos Aplicados</h4>
+        <div class="container">
+          <div class="row" style="height: 200px;">
+            <div class="col-md-12">
+              <p>Empleado: {{nombre}}</p>
+              <p>Salario: ${{salario}}</p>
+              <p>Salario x Hora: ${{salarioxHora}}</p>
+              <p>Horas Aplicadas: {{horasDescontadas}}</p>
+              <p>Total Minutos Tardes: {{totalMinutes}} Minutos</p>
+              <p style="font-weight: bold;">Salario a descontar: ${{descuentos}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card p-3" style="height: 267px;overflow-y: scroll;">
+        <h4>Permisos del mes</h4>
+        <div class="row"  *ngFor="let permiso of permisosList">
+          <div class="col-md-12 contenedor">
+            <div class="alert alert-danger">
+              <p>{{permiso.fechaPermiso}}</p>
+              <p>{{permiso.motivo}}</p>
+              <p style="font-weight: bold;">{{permiso.comentario}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="NuevoPermiso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-primary modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Nuevo Permiso</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label" for="date-input">Fecha</label>
+          <div class="col-md-4">
+            <input class="form-control" type="date" name="fechaPermiso" [(ngModel)]="fechaPermiso"
+              placeholder="date">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label" for="select1">Motivo</label>
+          <div class="col-md-10">
+            <select name="motivo" [(ngModel)]="motivo" class="form-control">
+              <option value="Compromiso Familiar">Compromiso Familiar</option>
+              <option value="Cita Médica">Cita Médica</option>
+              <option value="Reposición de tiempo">Reposición de tiempo</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-2 col-form-label" for="text-input">Comentario</label>
+          <div class="col-md-10">
+            <input type="text" name="comentario" [(ngModel)]="comentario" class="form-control"
+              placeholder="Ingrese un comentario">
+          </div>
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="onSubmit()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>

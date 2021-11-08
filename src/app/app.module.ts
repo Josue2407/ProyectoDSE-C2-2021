@@ -33,7 +33,10 @@ import { RegisterComponent } from './views/register/register.component';
 
 //Services
 import { EmpleadoService } from './services/empleado.service';
+
 import { AuthService } from './services/auth.service';
+
+import { MarcacionService } from './services/marcacion.service';
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent
@@ -93,7 +96,8 @@ import { ChartsModule } from 'ng2-charts';
     },
     IconSetService,
     EmpleadoService,
-    AuthService
+    AuthService,
+    MarcacionService
   ],
   bootstrap: [ AppComponent ]
 })
