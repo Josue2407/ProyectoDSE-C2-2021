@@ -17,6 +17,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/auth';
 
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
@@ -31,7 +33,11 @@ import { RegisterComponent } from './views/register/register.component';
 
 //Services
 import { EmpleadoService } from './services/empleado.service';
+
 import { MarcacionService } from './services/marcacion.service';
+
+import { AuthService } from './services/auth.service';
+
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent
@@ -72,7 +78,9 @@ import { ChartsModule } from 'ng2-charts';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireAuthModule,
+    AngularFirestoreModule,
   ],
   declarations: [
     AppComponent,
@@ -89,7 +97,8 @@ import { ChartsModule } from 'ng2-charts';
     },
     IconSetService,
     EmpleadoService,
-    MarcacionService
+    MarcacionService,
+    AuthService
   ],
   bootstrap: [ AppComponent ]
 })

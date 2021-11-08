@@ -10,6 +10,7 @@ import {Empleado} from '../../models/empleado';
 import { element } from 'protractor';
 import { PropertyRead } from '@angular/compiler';
 import Swal from 'sweetalert2';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -34,8 +35,10 @@ export class EmpleadosComponent implements OnInit{
     isss:string;
     contratacion:string;
     sueldo:number;
+    password:string;
   constructor(
-    public empleadoService: EmpleadoService
+    public empleadoService: EmpleadoService,
+    public authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -65,12 +68,17 @@ export class EmpleadosComponent implements OnInit{
     this.isss='';
     this.contratacion='';
     this.sueldo= null;
+    this.password='';
   }
 
   onSubmit(){
     this.empleadoService.insertEmpleado(this.nombre,this.email,this.direccion,this.fechaNacimiento,
-      this.ingresoEmpresa,this.cargo,this.horas,this.dui,this.nit,this.telefono,this.afp,this.isss,this.contratacion,this.sueldo);
-    Swal.fire({
+      this.ingresoEmpresa,this.cargo,this.horas,this.dui,this.nit,this.telefono,this.afp,this.isss,this.contratacion,this.sueldo,this.password);
+      if(this.cargo=="Supervisor"){
+        this.authService.SignUp(this.email,this.password);
+      }
+      
+      Swal.fire({
       icon: 'success',
       title: 'Empleado Ingresado',
       showConfirmButton: false,

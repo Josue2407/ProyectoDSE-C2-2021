@@ -239,5 +239,14 @@ export const navItems: INavData[] = [
     name: 'Usuarios',
     url: '/Usuarios',
     icon: 'icon-notebook'
-  }
+  },
+  {
+    title: true,
+    name: 'Sesión'
+  },
+  {
+    name: 'Salir',
+    url: '/login',
+    icon: 'cil-account-logout'
+  },
 ];
